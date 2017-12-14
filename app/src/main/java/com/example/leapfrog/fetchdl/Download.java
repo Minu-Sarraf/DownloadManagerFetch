@@ -1,8 +1,5 @@
 package com.example.leapfrog.fetchdl;
 
-/**
- * Created by tonyofrancis on 1/24/17.
- */
 
 public class Download {
 

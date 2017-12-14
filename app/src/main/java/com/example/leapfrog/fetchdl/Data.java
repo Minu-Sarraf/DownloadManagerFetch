@@ -48,23 +48,7 @@ public final class Data {
         return (dir + "/DownloadList/" + System.nanoTime() +"_"+ fileName);
     }
 
-    public static List<Request> getGameUpdates() {
 
-        List<Request> requests = new ArrayList<>();
-        String url = "http://speedtest.ftp.otenet.gr/files/test100k.db";
-
-        for (int i = 0; i < 10; i++) {
-
-            String filePath = getSaveDir() + "/gameAssets/" + "asset_" + System.nanoTime() + ".asset";
-
-            Request request = new Request(url,filePath)
-                    .setPriority(Fetch.PRIORITY_HIGH);
-
-            requests.add(request);
-        }
-
-        return requests;
-    }
 
     public static String getSaveDir() {
 

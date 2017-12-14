@@ -10,4 +10,5 @@ public interface ActionListener {
     void onResumeDownload(long id);
     void onRemoveDownload(long id);
     void onRetryDownload(long id);
+    void onDownloadComplete(long id);
 }

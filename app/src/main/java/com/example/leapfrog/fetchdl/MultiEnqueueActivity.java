@@ -76,7 +76,7 @@ public class MultiEnqueueActivity extends AppCompatActivity  {
         });
 
 
-      //  fetch.release();
+        fetch.release();
     }
 
     @Override
