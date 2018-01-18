@@ -5,8 +5,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
-import android.widget.ImageView;
+import android.util.Log;
 
 import com.tonyodev.fetch.Fetch;
 import com.tonyodev.fetch.listener.FetchListener;
@@ -35,6 +36,7 @@ public class DownlaodManagerImpl implements FetchListener {
     @Override
     public void onUpdate(long id, int status, int progress, long downloadedBytes, long fileSize, int error) {
         Download download = getDownload(id);
+        Log.e("error",error+" progress" +progress+" status"+status+""+id);
         if(download != null) {
 
             int position = getPosition(id);
@@ -49,8 +51,15 @@ public class DownlaodManagerImpl implements FetchListener {
 
             }
         }
-            Bitmap bmp = BitmapFactory.decodeFile(arrayList.get(0).getFilePath());
-            actionListener.onDownloadComplete(id);
+        if(status == Fetch.STATUS_DONE){
+            Log.e("Success",error+"progress" +progress+" status"+status);
+        }else if(status == Fetch.STATUS_ERROR){
+            Log.e("Success",error+"progress" +progress+" status"+status);
+            fetch.retry(id);
+        }
+           //Bitmap bmp = BitmapFactory.decodeFile(String.valueOf(Uri.parse(arrayList.get(0).getFilePath())));
+           // Log.e("file",arrayList.get(0).getFilePath());
+          // actionListener.onDownloadComplete(id,bmp);
 
     }
 
@@ -81,7 +90,7 @@ public class DownlaodManagerImpl implements FetchListener {
 
     public void clearAllDownloads() {
 
-        Fetch fetch = Fetch.getInstance(context);
+         fetch = Fetch.getInstance(context);
         fetch.removeAll();
 
         createNewRequests();
@@ -101,6 +110,7 @@ public class DownlaodManagerImpl implements FetchListener {
     public void enqueueDownloads() {
 
         List<Request> requests = Data.getFetchRequests();
+       // Log.e("enque", String.valueOf(requests));
         List<Long> ids = fetch.enqueue(requests);
 
         for (int i = 0; i < requests.size(); i++) {

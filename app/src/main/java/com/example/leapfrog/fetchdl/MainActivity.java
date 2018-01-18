@@ -16,7 +16,7 @@ import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
     long downloadId;
-    String url = "http://www.news1.co.il/uploadFiles/9760f342e7.jpg";
+    String url = "https://s3-us-west-2.amazonaws.com/com.naturecollections.pics/images/badge/1502364393563.png";
     String dirpath;
     ImageView imageView;
 
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.image);
         Fetch fetch = Fetch.getInstance(this);
         dirpath = Data.getSaveDir();
-        Request request = new Request(url, dirpath, "Testfetch.jpg");
+        Request request = new Request(url, dirpath, "Testfetch1.jpg");
         downloadId = fetch.enqueue(request);
 
         if (downloadId != Fetch.ENQUEUE_ERROR_ID) {
