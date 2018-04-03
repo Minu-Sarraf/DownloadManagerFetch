@@ -18,14 +18,15 @@ import java.util.List;
 public final class Data {
 
     public static final String[] sampleUrls = new String[]{
-            "http://dev.naturecollections.ischool.uw.edu/public/images/classification/1514993930048bbf08.jpg",
-            "http://dev.naturecollections.ischool.uw.edu/public/images/badge/1501827267616.png",
-            "http://dev.naturecollections.ischool.uw.edu/public/images/character/moose_introduction.png",
+            //"http://dev.naturecollections.ischool.uw.edu/public/images/classification/1514993930048bbf08.jpg",
+            // "http://dev.naturecollections.ischool.uw.edu/public/images/badge/1501827267616.png",
+            // "http://dev.naturecollections.ischool.uw.edu/public/images/character/moose_introduction.png",
             "http://dev.naturecollections.ischool.uw.edu/public/images/kahsdf/asdf.png",
-            "http://dev.naturecollections.ischool.uw.edu/images/badge/1501826648697.png",
-            "http://dev.naturecollections.ischool.uw.edu/images/badge/1501826648711.png",
-            "http://dev.naturecollections.ischool.uw.edu/public/images/badge/1501827267635.png",
-            "http://dev.naturecollections.ischool.uw.edu/images/badge/1501826648730.png",};
+            // "http://dev.naturecollections.ischool.uw.edu/images/badge/1501826648697.png",
+            //"http://dev.naturecollections.ischool.uw.edu/images/badge/1501826648711.png",
+            //"http://dev.naturecollections.ischool.uw.edu/public/images/badge/1501827267635.png",
+            //"http://dev.naturecollections.ischool.uw.edu/images/badge/1501826648730.png",};
+    };
 
     private Data() {
     }

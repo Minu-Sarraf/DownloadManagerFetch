@@ -30,6 +30,7 @@ public class DownlaodManagerImpl implements FetchListener {
 
     public DownlaodManagerImpl(Context context) {
         this.context = context;
+       // fetch = Fetch.newInstance(context);
 
     }
 
@@ -37,25 +38,26 @@ public class DownlaodManagerImpl implements FetchListener {
     public void onUpdate(long id, int status, int progress, long downloadedBytes, long fileSize, int error) {
         Download download = getDownload(id);
         Log.e("error",error+" progress" +progress+" status"+status+""+id);
+       // fetch = Fetch.newInstance(context);
         if(download != null) {
 
             int position = getPosition(id);
 
             if(status != Fetch.STATUS_REMOVED) {
-
-                download.setStatus(status);
-                download.setProgress(progress);
-                download.setError(error);
+               // fetch.enqueue(id);
             }else {
-                arrayList.remove(position);
+               // arrayList.remove(position);
 
             }
         }
         if(status == Fetch.STATUS_DONE){
             Log.e("Success",error+"progress" +progress+" status"+status);
         }else if(status == Fetch.STATUS_ERROR){
+          //  fetch.remove(id);
             Log.e("Success",error+"progress" +progress+" status"+status);
+
             fetch.retry(id);
+
         }
            //Bitmap bmp = BitmapFactory.decodeFile(String.valueOf(Uri.parse(arrayList.get(0).getFilePath())));
            // Log.e("file",arrayList.get(0).getFilePath());
@@ -71,7 +73,7 @@ public class DownlaodManagerImpl implements FetchListener {
                 return download;
             }
         }
-
+        fetch = null;
         return null;
     }
 
@@ -90,11 +92,11 @@ public class DownlaodManagerImpl implements FetchListener {
 
     public void clearAllDownloads() {
 
-         fetch = Fetch.getInstance(context);
+         fetch = Fetch.newInstance(context);
         fetch.removeAll();
 
         createNewRequests();
-        fetch.release();
+       // fetch.release();
     }
 
     private void createNewRequests() {
@@ -132,3 +134,4 @@ public class DownlaodManagerImpl implements FetchListener {
 
 
 }
+//add

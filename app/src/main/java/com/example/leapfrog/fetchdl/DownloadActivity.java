@@ -34,9 +34,10 @@ public class DownloadActivity extends AppCompatActivity implements ActionListene
                 .enableLogging(true)
                 .setConcurrentDownloadsLimit(1)
                 .apply();
-        fetch = Fetch.newInstance(this);
-        downlaodManagerImpl.clearAllDownloads();
+         fetch = Fetch.newInstance(this);
+        //downlaodManagerImpl.clearAllDownloads();
     }
+
 
     /*Removes all downloads managed by Fetch*/
 
@@ -46,7 +47,7 @@ public class DownloadActivity extends AppCompatActivity implements ActionListene
         super.onResume();
 
         List<RequestInfo> infos = fetch.get();
-        // fetch.addFetchListener(new DownlaodManagerImpl(this));
+        fetch.addFetchListener(new DownlaodManagerImpl(this));
         for (RequestInfo info : infos) {
             downlaodManagerImpl.onUpdate(info.getId(), info.getStatus()
                     , info.getProgress(), info.getDownloadedBytes(), info.getFileSize(), info.getError());
